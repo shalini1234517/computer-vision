@@ -1,0 +1,25 @@
+import cv2
+
+# Read Image
+image = cv2.imread("image.jpg")   # Replace with your image file
+
+if image is None:
+    print("Error loading image")
+    exit()
+
+# Get original size
+height, width = image.shape[:2]
+
+# -------- Resize to Bigger Size (Scale Up) --------
+bigger = cv2.resize(image, None, fx=1.5, fy=1.5, interpolation=cv2.INTER_LINEAR)
+
+# -------- Resize to Smaller Size (Scale Down) --------
+smaller = cv2.resize(image, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
+
+# Display Images
+cv2.imshow("Original Image", image)
+cv2.imshow("Bigger Image", bigger)
+cv2.imshow("Smaller Image", smaller)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
