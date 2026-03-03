@@ -1,0 +1,33 @@
+import cv2
+
+video_path = "video.mp4"   # Put your video file in project folder
+
+def play_video(delay, window_name):
+    cap = cv2.VideoCapture(video_path)
+
+    if not cap.isOpened():
+        print("Error opening video file")
+        return
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        cv2.imshow(window_name, frame)
+
+        if cv2.waitKey(delay) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+
+
+# Normal Speed
+play_video(30, "Normal Speed")
+
+# Slow Motion
+play_video(100, "Slow Motion")
+
+# Fast Motion
+play_video(5, "Fast Motion")
