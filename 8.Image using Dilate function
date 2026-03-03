@@ -1,0 +1,22 @@
+import cv2
+import numpy as np
+
+# Read Image
+image = cv2.imread("image.jpg")   # Replace with your image file
+
+if image is None:
+    print("Error loading image")
+    exit()
+
+# Create Kernel (3x3 matrix)
+kernel = np.ones((3,3), np.uint8)
+
+# Apply Dilation
+dilated_image = cv2.dilate(image, kernel, iterations=1)
+
+# Display Images
+cv2.imshow("Original Image", image)
+cv2.imshow("Dilated Image", dilated_image)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
