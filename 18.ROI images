@@ -1,0 +1,27 @@
+import cv2
+
+# Read image
+img = cv2.imread("image.jpg")
+
+if img is None:
+    print("Image not found")
+    exit()
+
+# Get image size
+h, w = img.shape[:2]
+
+# Define ROI size (1/4 of image)
+roi = img[0:h//4, 0:w//4]
+
+# Get ROI height and width
+rh, rw = roi.shape[:2]
+
+# Paste ROI to another safe location
+img[h//2:h//2+rh, w//2:w//2+rw] = roi
+
+# Show images
+cv2.imshow("Original Image", cv2.imread("image.jpg"))
+cv2.imshow("Output Image (ROI Copied)", img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
