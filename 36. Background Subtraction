@@ -1,0 +1,10 @@
+import cv2
+
+img = cv2.imread('image.jpg')
+bg = cv2.imread('background.jpg')
+
+result = cv2.absdiff(img,bg)
+
+cv2.imshow("Background Subtracted",result)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
